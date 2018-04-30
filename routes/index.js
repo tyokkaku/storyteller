@@ -23,7 +23,17 @@ router.post('/new', function(req, res, next) {
 });
 
 router.post('/delete', function(req, res, next) {
+  let deleteNumber = req.body['delete'];
+  console.log(deleteNumber);
 
+  if (deleteNumber.match(/[\D]+/) || !deleteNumber ) {
+    console.log('returnしました');
+    return;
+  } else {
+    episodes.splice(deleteNumber, 1);
+    console.log(episodes);
+  }
+  res.redirect('/');
 });
 
 module.exports = router;
