@@ -1,13 +1,15 @@
 const express = require('express');
 const router = express.Router();
-const bodyParser = require('body-parser'); 
 
-/* GET users listing. */
-router.post('/', function(req, res, next) {
-  res.setHeader('Content-Type', 'text/plain');
-  res.send(req.body.toString());
-  console.log(req.body);
-});
+// /* GET users listing. */
+// const episodes = [];
 
+// router.post('/', function(req, res, next) {
+//   res.set('Content-Type', 'text/plain');
+//    let episode = req.body['episode'].toString();
+//    episodes.push(episode);
+//    console.log(episodes);
+//   res.redirect('/');
+// });
 
 module.exports = router;
