@@ -12,12 +12,15 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/new', function(req, res, next) {
-  let episode = req.body['episode'];  
-  episodes.push(episode);
-    console.log(episodes);
-  res.redirect('/');
+  let episode = req.body['episode']; 
+  if (!episode){
+    return;
+  } else {
+    episodes.push(episode);
+      console.log(episodes);
+    res.redirect('/');
+  }
 });
-
 
 router.post('/delete', function(req, res, next) {
 
