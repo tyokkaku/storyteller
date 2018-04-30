@@ -3,8 +3,13 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
-  form(action="/", method="post")
+  form(id="new", action="/new", method="post")
     textarea(rows="10", cols="40", name="episode")
-    button(type="submit")
-  each episode in episodes
-    li #{episode}
+    button(name="new",type="submit") 投稿
+
+  form(id="delete", action="/delete", method="post")
+    input(type="text", name="delete")
+    button(type="submit") 削除
+
+  - for (let i=0; i < episodes.length; i++)
+    li #{i} #{episodes[i]}

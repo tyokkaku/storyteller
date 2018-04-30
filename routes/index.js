@@ -7,16 +7,20 @@ const episodes = [];
 router.get('/', function(req, res, next) {
   res.render('index', { 
     title: 'StoryTeller',
-    episodes: episodes
+    episodes: episodes,
   });
 });
 
-router.post('/', function(req, res, next) {
-  res.set('Content-Type', 'text/plain');
-   let episode = req.body['episode'];
-   episodes.push(episode);
-   console.log(episodes);
+router.post('/new', function(req, res, next) {
+  let episode = req.body['episode'];  
+  episodes.push(episode);
+    console.log(episodes);
   res.redirect('/');
+});
+
+
+router.post('/delete', function(req, res, next) {
+
 });
 
 module.exports = router;
