@@ -6,6 +6,12 @@ block content
   form(id="new", action="/new", method="post")
     textarea(rows="10", cols="40", name="episode")
     button(name="new",type="submit") 投稿
+    br
+    input(type="text", name="edit")
+    button(name="new",type="submit") 編集
+    br
+    input(type="text", name="insert")
+    button(name="new",type="submit") 挿入
 
   form(id="delete", action="/delete", method="post")
     input(type="text", name="delete")
