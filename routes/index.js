@@ -47,4 +47,12 @@ router.post('/delete', function(req, res, next) {
   }
 });
 
+router.get('/view', function(req, res, next) {
+  res.render('view', 
+  {
+    title: 'StoryTeller',
+    episodes: episodes,
+  });  
+});
+
 module.exports = router;

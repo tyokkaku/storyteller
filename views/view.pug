@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+
+  p#viewEpisode #{episodes[0]}
+
+
+  script(type='text/javascript').
+    const viewEpisode = document.getElementById('viewEpisode');
+    viewEpisode.addEventListener('click', () => {
+      
+    });

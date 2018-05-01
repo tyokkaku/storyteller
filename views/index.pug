@@ -12,10 +12,10 @@ block content
     br
     input(type="text", name="insert")
     button(name="new",type="submit") 挿入
-
   form(id="delete", action="/delete", method="post")
     input(type="text", name="delete")
     button(type="submit") 削除
+  a(href="/view" method="get") ビューページ
 
   - for (let i=0; i < episodes.length; i++)
     li #{i} #{episodes[i]}
