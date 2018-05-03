@@ -1,8 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
+const countFunc = require('./countFunc');
+
 const episodes = [];
-let i = 0;
+let currentEpisodeNumber = 0;
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -12,29 +14,8 @@ router.get('/', function(req, res, next) {
   });
 });
 
-function countUp(){
-  if(i >= episodes.length - 1) {
-    return;
-  } else {
-    i++;
-  }
-};
-function countDown(){
-  if(i===0){
-    return;
-  } else {
-    i--;
-  }
-};
-function resetCount(){
-  i = 0;
-};
-
-
 router.post('/new', function(req, res, next) {
   let episode = req.body['episode']; 
-  // let episode2 = episode.replace(/\n/g,'<BR>');
-
   let editNumber = req.body['edit'];
   let insertNumber = req.body['insert'];
   console.log(editNumber);
@@ -58,13 +39,11 @@ router.post('/new', function(req, res, next) {
 
 router.post('/delete', function(req, res, next) {
   let deleteNumber = req.body['delete'];
-  console.log(deleteNumber);
 
   if (deleteNumber.match(/[\D]+/) || !deleteNumber ) {
     res.send('削除するエピソードの番号を入力してください');
   } else {
     episodes.splice(deleteNumber, 1);
-    console.log(episodes);
     res.redirect('/');
   }
 });
@@ -74,7 +53,7 @@ router.get('/view', function(req, res, next) {
   {
     title: 'StoryTeller',
     episodes: episodes,
-    i: i
+    currentEpisodeNumber: currentEpisodeNumber
   });
 });
 
@@ -86,16 +65,16 @@ router.post('/view', function(req, res, next) {
   let backToTop = req.body['backToTop'];
 
   if(goNext){
-    countUp(i);
-    let nextEpisode = episodes[i];
+    currentEpisodeNumber = countFunc.countUp();
+    let nextEpisode = episodes[currentEpisodeNumber];
     res.send(nextEpisode);
   } else if(goBack) {
-    countDown(i);
-    let prevEpisode = episodes[i];
+    currentEpisodeNumber = countFunc.countDown();
+    let prevEpisode = episodes[currentEpisodeNumber];
     res.send(prevEpisode);
   } else if(backToTop) {
-    resetCount(i);
-    let firstEpisode = episodes[i];
+    currentEpisodeNumber = countFunc.resetCount();
+    let firstEpisode = episodes[currentEpisodeNumber];
     res.send(firstEpisode);
   } else {
     console.log('その他の処理');
@@ -103,4 +82,7 @@ router.post('/view', function(req, res, next) {
   }
 });
 
+
+module.exports.episodes = episodes;
+module.exports.currentEpisodeNumber = currentEpisodeNumber;
 module.exports = router;
