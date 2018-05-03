@@ -35,7 +35,7 @@ router.post('/new', function(req, res, next) {
       console.log(episodes);
       res.redirect('/');
     }
-});
+  });
 
 router.post('/delete', function(req, res, next) {
   let deleteNumber = req.body['delete'];
@@ -81,7 +81,6 @@ router.post('/view', function(req, res, next) {
     res.end();
   }
 });
-
 
 module.exports.episodes = episodes;
 module.exports.currentEpisodeNumber = currentEpisodeNumber;

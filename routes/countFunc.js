@@ -1,5 +1,3 @@
-
-
 const indexBox = require('./index');
 
 module.exports = {
