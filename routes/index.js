@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 
 const episodes = [];
+const firstEpisodeNumber = 0;
+let i = 0;
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -10,6 +12,24 @@ router.get('/', function(req, res, next) {
     episodes: episodes,
   });
 });
+
+function countUp(){
+  if(i >= episodes.length - 1) {
+    return;
+  } else {
+    i++;
+  }
+};
+function countDown(){
+  if(i===0){
+    return;
+  } else {
+    i--;
+  }
+};
+function resetCount(){
+  i = 0;
+};
 
 router.post('/new', function(req, res, next) {
   let episode = req.body['episode']; 
@@ -48,11 +68,37 @@ router.post('/delete', function(req, res, next) {
 });
 
 router.get('/view', function(req, res, next) {
-  res.render('view', 
+  res.render('view',
   {
     title: 'StoryTeller',
     episodes: episodes,
-  });  
+    firstEpisodeNumber: firstEpisodeNumber
+  });
+});
+
+router.post('/view', function(req, res, next) {
+  res.setHeader('Content-Type', 'text/plain');
+
+  let goNext = req.body['goNext'];
+  let goBack = req.body['goBack'];
+  let backToTop = req.body['backToTop'];
+
+  if(goNext){
+    countUp();
+    let nextEpisode = episodes[i];
+    res.send(nextEpisode);
+  } else if(goBack) {
+    countDown();
+    let prevEpisode = episodes[i];
+    res.send(prevEpisode);
+  } else if(backToTop) {
+    resetCount();
+    let firstEpisode = episodes[i];
+    res.send(firstEpisode);
+  } else {
+    console.log('その他の処理');
+    res.end();
+  }
 });
 
 module.exports = router;
