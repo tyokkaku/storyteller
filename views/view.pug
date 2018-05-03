@@ -4,7 +4,7 @@ block content
   h1= title
   p Welcome to #{title}
   //- p#hoge #{episodes[currentNumber]}
-  p#hogehoge #{episodes[firstEpisodeNumber]}
+  p#hogehoge(style="white-space:pre;") #{episodes[i]}
   div#result
 
   button#nextButton
@@ -20,7 +20,7 @@ block content
           data: {'goNext': true},
         })
         .done( (data) => {
-          $('#hogehoge').html(data);
+          $('#hogehoge').text(data);
         });
         } else {
           return;
@@ -35,7 +35,7 @@ block content
           data: {'goBack': true},
         })
         .done( (data) => {
-          $('#hogehoge').html(data);
+          $('#hogehoge').text(data);
         });
         } else {
           return;
@@ -50,7 +50,7 @@ block content
           data: {'backToTop': true},
         })
         .done( (data) => {
-          $('#hogehoge').html(data);
+          $('#hogehoge').text(data);
         });
         } else {
           return;

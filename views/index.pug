@@ -18,4 +18,7 @@ block content
   a(href="/view" method="get") ビューページ
 
   - for (let i=0; i < episodes.length; i++)
-    li #{i} #{episodes[i]}
+    table
+      tr
+        td #{i}
+        td(style="white-space:pre;") #{episodes[i]}

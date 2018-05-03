@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 
 const episodes = [];
-const firstEpisodeNumber = 0;
 let i = 0;
 
 /* GET home page. */
@@ -33,6 +32,8 @@ function resetCount(){
 
 router.post('/new', function(req, res, next) {
   let episode = req.body['episode']; 
+  // let episode2 = episode.replace(/\n/g,'<BR>');
+
   let editNumber = req.body['edit'];
   let insertNumber = req.body['insert'];
   console.log(editNumber);
@@ -72,7 +73,7 @@ router.get('/view', function(req, res, next) {
   {
     title: 'StoryTeller',
     episodes: episodes,
-    firstEpisodeNumber: firstEpisodeNumber
+    i: i
   });
 });
 
