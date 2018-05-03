@@ -4,7 +4,7 @@ block content
   h1= title
   p Welcome to #{title}
   form(id="new", action="/new", method="post")
-    textarea(rows="10", cols="40", name="episode")
+    textarea(rows="10", cols="40", name="episode", id="inputedChar")
     button(name="new",type="submit") 投稿
     br
     input(type="text", name="edit")
@@ -16,9 +16,21 @@ block content
     input(type="text", name="delete")
     button(type="submit") 削除
   a(href="/view" method="get") ビューページ
+  p#label 0/1000
+    //- span#label 
 
   - for (let i=0; i < episodes.length; i++)
     table
       tr
         td #{i}
         td(style="white-space:pre;") #{episodes[i]}
+
+  script(type='text/javascript').
+    'use strict';
+    let label = document.getElementById('label');
+    let inputedChar = document.getElementById('inputedChar');
+    const LIMIT = 1000;
+
+    inputedChar.addEventListener('keyup', () => {
+      label.innerHTML = `${inputedChar.value.length}/${LIMIT}`;
+    });
