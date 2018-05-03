@@ -30,6 +30,7 @@ function resetCount(){
   i = 0;
 };
 
+
 router.post('/new', function(req, res, next) {
   let episode = req.body['episode']; 
   // let episode2 = episode.replace(/\n/g,'<BR>');
@@ -85,15 +86,15 @@ router.post('/view', function(req, res, next) {
   let backToTop = req.body['backToTop'];
 
   if(goNext){
-    countUp();
+    countUp(i);
     let nextEpisode = episodes[i];
     res.send(nextEpisode);
   } else if(goBack) {
-    countDown();
+    countDown(i);
     let prevEpisode = episodes[i];
     res.send(prevEpisode);
   } else if(backToTop) {
-    resetCount();
+    resetCount(i);
     let firstEpisode = episodes[i];
     res.send(firstEpisode);
   } else {
