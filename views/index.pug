@@ -4,7 +4,7 @@ block content
   h1= title
   p Welcome to #{title}
   form(id="new", action="/new", method="post")
-    textarea(rows="10", cols="40", name="episode", id="inputedChar")
+    textarea(rows="10", cols="40", name="episode", id="inputedChar", maxlength="1000")
     button(name="new",type="submit") 投稿
     br
     input(type="text", name="edit")
