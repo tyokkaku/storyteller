@@ -11,20 +11,20 @@ html
       div.split-box.left-box
         div.titleArea
           h1= title
-        form.formArea(id="new", action="/new", method="post")
-          textarea(rows="10", cols="40", name="episode", id="inputedChar", maxlength="1000")
         div.labelArea
           p#label 0/1000
-        div.transmitRevisionArea
-          button(name="new",type="submit") 投稿
-          input(type="text", name="edit")
-          button(name="new",type="submit") 編集
-          input(type="text", name="insert")
-          button(name="new",type="submit") 挿入
-          form(id="delete", action="/delete", method="post")
-          input(type="text", name="delete")
-          button(type="submit") 削除
-          a(href="/view" method="get") ビューページ
+        form.formArea(id="new", action="/new", method="post")
+          textarea(rows="10", cols="40", name="episode", id="inputedChar", maxlength="1000")
+          div.transmitRevisionArea
+            button(name="new",type="submit", class="btnStyle") 編集
+            input(type="text", name="edit", class="inputStyle", form="new")
+            button(name="new",type="submit", class="btnStyle") 挿入
+            input(type="text", name="insert", class="inputStyle", form="new")
+            button#submitBtn(name="new",type="submit", class="btnStyle", form="new") 投稿
+        form(id="delete", action="/delete", method="post")
+          button(type="submit", class="btnStyle") 削除
+          input(type="text", name="delete", class="inputStyle" form="delete", class="inputStyle")
+        a(href="/view" method="get") ビューページ
       div.split-box.right-box
         div.right-inner
           - for (let i=0; i < episodes.length; i++)
