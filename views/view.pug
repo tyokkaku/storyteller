@@ -1,4 +1,11 @@
-extends layout
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel="stylesheet", href="/stylesheets/animate.css/animate.min.css")
+    script(src="https://code.jquery.com/jquery-3.3.1.min.js")
+    script(src="/javascripts/view.js")
 
 block content
   h1= title
@@ -6,51 +13,3 @@ block content
   //- p#hoge #{episodes[currentNumber]}
   p#hogehoge(style="white-space:pre;") #{episodes[currentEpisodeNumber]}
   div#result
-
-  script(type='text/javascript').
-   $(function(){
-      $('html').keyup(function(e) {
-        if(e.keyCode === 39){
-        $.ajax({
-          url:'./view',
-          type:'POST',
-          data: {'goNext': true},
-        })
-        .done( (data) => {
-          $('#hogehoge').text(data);
-        });
-        } else {
-          return;
-        }
-      });
-
-      $('html').keyup(function(e) {
-        if(e.keyCode === 37){
-        $.ajax({
-          url:'./view',
-          type:'POST',
-          data: {'goBack': true},
-        })
-        .done( (data) => {
-          $('#hogehoge').text(data);
-        });
-        } else {
-          return;
-        }
-      });
-
-      $('html').keyup(function(e) {
-        if(e.keyCode === 13){
-        $.ajax({
-          url:'./view',
-          type:'POST',
-          data: {'backToTop': true},
-        })
-        .done( (data) => {
-          $('#hogehoge').text(data);
-        });
-        } else {
-          return;
-        }
-      });
-      });

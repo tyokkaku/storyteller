@@ -6,3 +6,8 @@ body {
 a {
   color: #00B7FF;
 }
+
+#hogehoge {
+  font-size: 40px;
+  animation-duration: 680ms;
+}
