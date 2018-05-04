@@ -1,0 +1,83 @@
+html,body{
+  height:100%;
+  margin:0;
+  padding:0;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  }
+  * {
+  box-sizing:border-box;
+  }
+  .split-box{
+  position:absolute;
+  width:50%;
+  height:100%;
+  padding:1em;
+  }
+
+/* left-box style */
+
+  .left-box {
+  left:0;
+  background:#ffffff;
+  }
+    .left-box a{
+    color:#000000;
+    display:block;
+    }
+    .titleArea h1 {
+      font-size: 15px;
+    }
+    .formArea {
+      text-align: center;
+    }
+    .formArea textarea {
+      font-size: 17px;
+      font-family: YuMincho;
+      padding: 20px;
+      resize: vertical;
+      width: 90%;
+      height: 650px;
+      outline: none;
+      -webkit-transition: all .3s;
+      transition: all .3s;
+      /* border: 1px solid rgb(233, 229, 229); */
+      box-shadow: 0 0 10px #434b49;
+      border: 1px solid #434b49;
+    }
+    .formArea textarea:focus {
+        border: hidden;
+        box-shadow: none;
+    }
+
+  /* label style*/
+
+    #label {
+      text-align: right;
+    }
+
+  /*  transmitRevisionArea style*/
+    .transmitRevisionArea{
+      text-align: center;
+      margin-left: 10px;
+    }
+
+
+/* right-box style */
+
+  .right-box {
+  right:0;
+  overflow-y:scroll;
+  background:#000000;
+  color:#ffffff;
+  }
+
+
+/* media style */
+
+@media screen and (max-width:600px) { 
+  .split-box {
+  position:relative;
+  width:100%;
+  height:auto;
+  }
+  }

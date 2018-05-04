@@ -2,35 +2,38 @@ doctype html
 html
   head
     title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/spredStyle.css')
     script(src="https://code.jquery.com/jquery-3.3.1.min.js")
     //- script(src="/javascripts/indexFunc.js")
 
   body
     block content
-      h1= title
-      p Welcome to #{title}
-      form(id="new", action="/new", method="post")
-        textarea(rows="10", cols="40", name="episode", id="inputedChar", maxlength="1000")
-        button(name="new",type="submit") 投稿
-        br
-        input(type="text", name="edit")
-        button(name="new",type="submit") 編集
-        br
-        input(type="text", name="insert")
-        button(name="new",type="submit") 挿入
-      form(id="delete", action="/delete", method="post")
-        input(type="text", name="delete")
-        button(type="submit") 削除
-      a(href="/view" method="get") ビューページ
-      p#label 0/1000
-        //- span#label 
+      div.split-box.left-box
+        div.titleArea
+          h1= title
+        form.formArea(id="new", action="/new", method="post")
+          textarea(rows="10", cols="40", name="episode", id="inputedChar", maxlength="1000")
+        div.labelArea
+          p#label 0/1000
+        div.transmitRevisionArea
+          button(name="new",type="submit") 投稿
+          input(type="text", name="edit")
+          button(name="new",type="submit") 編集
+          input(type="text", name="insert")
+          button(name="new",type="submit") 挿入
+          form(id="delete", action="/delete", method="post")
+          input(type="text", name="delete")
+          button(type="submit") 削除
+          a(href="/view" method="get") ビューページ
+      div.split-box.right-box
+        div.right-inner
+          - for (let i=0; i < episodes.length; i++)
+            table
+              tr
+                td #{i}
+                td(style="white-space:pre;") #{episodes[i]}
 
-      - for (let i=0; i < episodes.length; i++)
-        table
-          tr
-            td #{i}
-            td(style="white-space:pre;") #{episodes[i]}
+
 
   script(type='text/javascript').
     'use strict';
