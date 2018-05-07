@@ -4,7 +4,6 @@ html
     title= title
     link(rel='stylesheet', href='/stylesheets/spredStyle.css')
     script(src="https://code.jquery.com/jquery-3.3.1.min.js")
-    //- script(src="/javascripts/indexFunc.js")
 
   body
     block content
@@ -22,7 +21,7 @@ html
             div#insertButton
               button(name="new",type="submit", class="buttonStyle") 挿入
               input(type="text", name="insert", class="inputStyle", form="new")
-            div#submitButton
+            div#submitButtonArea
               button#submitButton(name="new",type="submit", class="buttonStyle", form="new") 投稿
         form.deleteFormArea(id="delete", action="/delete", method="post")
           div#deleteButton
@@ -30,21 +29,28 @@ html
             input(type="text", name="delete", class="inputStyle" form="delete", class="inputStyle")
         a.viewLink(href="/view" method="get") ビューページ
       div.split-box.right-box
-        div.right-inner
+        div#right-box.right-inner
           - for (let i=0; i < episodes.length; i++)
             table.episodeTable(style="table-layout: fixed;width:100%;")
               tr.episodeRow
-                td.episode(style="word-warap:break-word;") #{episodes[i]}
+                td#hogea.episode(style="white-space: pre-wrap;") #{episodes[i]}
                 td.episodeNumber #{i}
-
-
+          hr#scrollBottom
 
   script(type='text/javascript').
     'use strict';
     let label = document.getElementById('label');
     let inputedChar = document.getElementById('inputedChar');
+    const scrollBottom = document.getElementById('scrollBottom');
     const LIMIT = 1000;
 
     inputedChar.addEventListener('keyup', () => {
       label.innerHTML = `${inputedChar.value.length}/${LIMIT}`;
     });
+
+      $(function() {
+        let bottom = $('#scrollBottom').offset().top;
+        $('.right-box').animate({
+          scrollTop: bottom
+        }, 1000);
+      });

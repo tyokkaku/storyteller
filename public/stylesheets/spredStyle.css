@@ -33,7 +33,7 @@ html,body{
     .formArea textarea {
       font-size: 17px;
       font-family: YuMincho;
-      margin: 200px 0 50px 0 ;
+      margin: 20% 0 50px 0 ;
       padding: 60px;
       resize: vertical;
       width: 90%;
@@ -118,14 +118,16 @@ html,body{
   .right-box {
   right:0;
   overflow-y:scroll;
-  background:#000000;
-  color:#ffffff;
   font-family: YuMincho;
   font-size: 15px;
   }
 
+  .right-inner {
+    height: 100%;
+  }
+
   .episodeTable {
-    margin: 50px 0 0 0 ;
+    margin: 20px 0 0 0 ;
   }
 
   .episodeRow:hover {
@@ -141,6 +143,10 @@ html,body{
     text-align: center;
     width: 50px;
     padding: 0 10px 0 0;
+  }
+
+  #scrollBottom {
+    margin: 0 0 65px 0;
   }
   
 
