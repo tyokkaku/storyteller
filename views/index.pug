@@ -15,23 +15,27 @@ html
           p#label 0/1000
         form.formArea(id="new", action="/new", method="post")
           textarea(rows="10", cols="40", name="episode", id="inputedChar", maxlength="1000")
-          div.transmitRevisionArea
-            button(name="new",type="submit", class="btnStyle") 編集
-            input(type="text", name="edit", class="inputStyle", form="new")
-            button(name="new",type="submit", class="btnStyle") 挿入
-            input(type="text", name="insert", class="inputStyle", form="new")
-            button#submitBtn(name="new",type="submit", class="btnStyle", form="new") 投稿
-        form(id="delete", action="/delete", method="post")
-          button(type="submit", class="btnStyle") 削除
-          input(type="text", name="delete", class="inputStyle" form="delete", class="inputStyle")
-        a(href="/view" method="get") ビューページ
+          div#container.transmitRevisionArea
+            div#editButton
+              button(name="new",type="submit", class="buttonStyle") 編集
+              input(type="text", name="edit", class="inputStyle", form="new")
+            div#insertButton
+              button(name="new",type="submit", class="buttonStyle") 挿入
+              input(type="text", name="insert", class="inputStyle", form="new")
+            div#submitButton
+              button#submitButton(name="new",type="submit", class="buttonStyle", form="new") 投稿
+        form.deleteFormArea(id="delete", action="/delete", method="post")
+          div#deleteButton
+            button(type="submit", class="buttonStyle") 削除
+            input(type="text", name="delete", class="inputStyle" form="delete", class="inputStyle")
+        a.viewLink(href="/view" method="get") ビューページ
       div.split-box.right-box
         div.right-inner
           - for (let i=0; i < episodes.length; i++)
-            table
-              tr
-                td #{i}
-                td(style="white-space:pre;") #{episodes[i]}
+            table.episodeTable(style="table-layout: fixed;width:100%;")
+              tr.episodeRow
+                td.episode(style="word-warap:break-word;") #{episodes[i]}
+                td.episodeNumber #{i}
 
 
 

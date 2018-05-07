@@ -33,20 +33,23 @@ html,body{
     .formArea textarea {
       font-size: 17px;
       font-family: YuMincho;
-      padding: 20px;
+      margin: 200px 0 50px 0 ;
+      padding: 60px;
       resize: vertical;
       width: 90%;
-      height: 650px;
+      height: 200px;
       outline: none;
       -webkit-transition: all .3s;
       transition: all .3s;
-      /* border: 1px solid rgb(233, 229, 229); */
-      box-shadow: 0 0 10px #434b49;
-      border: 1px solid #434b49;
+      /* box-shadow: 0 0 10px #434b49; */
+      /* border: 1px solid #434b49; */
+      border: 1px dotted #434b49;
     }
     .formArea textarea:focus {
-        border: hidden;
-        box-shadow: none;
+        /* border: hidden; */
+        /* box-shadow: none; */
+        box-shadow: 0 0 10px #434b49;
+        border: 1px solid #434b49;  
     }
 
   /* label style*/
@@ -55,43 +58,60 @@ html,body{
       text-align: right;
     }
 
+    #container {
+      overflow: hidden;
+    }
+
   /*  transmitRevisionArea style*/
     .transmitRevisionArea{
-      margin: 14px 0;
+      margin: 0 0 14px 0;
       text-align: center;
       margin-left: 10px;
     }
 
-    .btnStyle {
-      padding: 0.3em 1em;
-      text-decoration: none;
-      color: #67c5ff;
-      /* border: solid 2px #67c5ff; */
-      border-radius: 3px;
-      transition: .4s;
-      font-size: 15px;
-      width: 100px;
-      height: 50px;
+    #editButton, #insertButton {
       float: left;
-      }
-
-    .btnStyle:hover {
-      background: #67c5ff;
-      color: white;  
+      margin: 0 0 0 3%;
     }
 
-    .transmitRevisionArea #submitBtn {
+    #submitButton {
+      margin: 0 4% 0 0;
       float: right;
+      width: 100px;
+      height: 40px;
+    }
+
+    .buttonStyle {
+      border: solid 1px black;
+      width: 40px;
+      height: 40px;
+    }
+
+    .buttonStyle:hover {
+      background: #434b49;
+      color: white;
     }
 
     .inputStyle {
-      float: left;
-      padding: 0.3em 1em;
       text-align: center;
-      width: 50px;
-      height: 50px;
+      width: 40px;
+      height: 40px;  
     }
 
+    .deleteFormArea {
+      overflow: hidden;
+      margin: 0 0 0 3%;
+    }
+
+    #deleteButton {
+      margin: 0 10px;
+      float: left;
+    }
+
+    .viewLink {
+      margin: 14px 0;
+      text-align: center;
+    }
 
 /* right-box style */
 
@@ -100,8 +120,32 @@ html,body{
   overflow-y:scroll;
   background:#000000;
   color:#ffffff;
+  font-family: YuMincho;
+  font-size: 15px;
   }
 
+  .episodeTable {
+    margin: 50px 0 0 0 ;
+  }
+
+  .episodeRow:hover {
+    text-decoration: underline;    
+  }
+
+  .episode {
+    padding: 0 0 0 15px;
+    width: 600px;
+  }
+
+  .episodeNumber {
+    text-align: center;
+    width: 50px;
+    padding: 0 10px 0 0;
+  }
+  
+
+
+/*  */
 
 /* media style */
 
@@ -112,3 +156,34 @@ html,body{
   height:auto;
   }
   }
+
+
+  /* .buttonStyle {
+    padding: 0.3em 1em;
+    text-decoration: none;
+    color: #67c5ff;
+    border: solid 2px #67c5ff;
+    border-radius: 3px;
+    transition: .4s;
+    font-size: 15px;
+    width: 100px;
+    height: 50px;
+    float: left;
+    }
+
+  .buttonStyle:hover {
+    background: #67c5ff;
+    color: white;  
+  }
+
+  .transmitRevisionArea #submitButton {
+    float: right;
+  }
+
+  .inputStyle {
+    float: left;
+    padding: 0.3em 1em;
+    text-align: center;
+    width: 50px;
+    height: 50px;
+  } */
