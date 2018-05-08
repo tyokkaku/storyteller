@@ -31,7 +31,7 @@ $(function(){
     },
   });
 
-  // javascript
+  // numberclassを付与する
 
    $('.episodeTable td').each(function(i){
        $(this).attr('class','number' + (i+1));
@@ -54,7 +54,7 @@ $(function(){
     }
   };
 
-  // keyupFunc
+  // keyEnvetFunc
 
   for (let i=1; i<=len; i++){
     $(`.number${i}`).animateCss('fadeIn');
@@ -108,6 +108,4 @@ $(function(){
       return;
     }
   });
-
-
 });

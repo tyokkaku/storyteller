@@ -26,8 +26,17 @@ html
         form.deleteFormArea(id="delete", action="/delete", method="post")
           div#deleteButton
             button(type="submit", class="buttonStyle") 削除
-            input(type="text", name="delete", class="inputStyle" form="delete", class="inputStyle")
+            input(type="text", name="delete", class="inputStyle" form="delete")
+        form.allDeleteFormArea(id="allDelete", action="/allDelete", method="post")
+          div#allDeleteButtonArea
+            button#allDeleteButton(type="submit", class="buttonStyle") 全削除
+            input(type="text", name="allDelete", class="inputStyle")
         a.viewLink(href="/view" method="get") ビューページ
+        div#navigetionArea
+            p Enter：すべてのエピソードを表示する
+            p BackSpace：すぺてのエピソードを非表示にする
+            p ←→：エピソードを戻す/進める
+
       div.split-box.right-box
         div#right-box.right-inner
           - for (let i=0; i < episodes.length; i++)
@@ -41,10 +50,15 @@ html
     'use strict';
     let label = document.getElementById('label');
     let inputedChar = document.getElementById('inputedChar');
+    const allDeleteButton = document.getElementById('allDeleteButton');
     const scrollBottom = document.getElementById('scrollBottom');
     const LIMIT = 1000;
 
     inputedChar.addEventListener('keyup', () => {
+      label.innerHTML = `${inputedChar.value.length}/${LIMIT}`;
+    });
+
+    allDeleteButton.addEventListener('click', () => {
       label.innerHTML = `${inputedChar.value.length}/${LIMIT}`;
     });
 

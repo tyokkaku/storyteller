@@ -48,6 +48,17 @@ router.post('/delete', function(req, res, next) {
   }
 });
 
+router.post('/allDelete', function(req, res, next) {
+  let allDelete = req.body['allDelete'];
+
+  if (allDelete.match(/999/)) {
+    episodes.splice(0, episodes.length);
+    res.redirect('/');
+  } else {
+    res.send('すべてのエピソードを削除するには「999」と入力してください');
+  }
+});
+
 router.get('/view', function(req, res, next) {
   res.render('view',
   {
@@ -56,6 +67,9 @@ router.get('/view', function(req, res, next) {
     currentEpisodeNumber: currentEpisodeNumber
   });
 });
+
+// AJAXでエピソードをテキスト形式で返す
+// 未使用
 
 // router.post('/view', function(req, res, next) {
 //   res.setHeader('Content-Type', 'text/plain');
@@ -73,10 +87,10 @@ router.get('/view', function(req, res, next) {
 //     currentEpisodeNumber = countFunc.countDown();
 //     let prevEpisode = episodes[currentEpisodeNumber];
 //     res.send(prevEpisode);
-  // } else if(backToTop) {
-  //   currentEpisodeNumber = countFunc.resetCount();
-  //   let firstEpisode = episodes[currentEpisodeNumber];
-  //   res.send(firstEpisode);
+// } else if(backToTop) {
+//   currentEpisodeNumber = countFunc.resetCount();
+//   let firstEpisode = episodes[currentEpisodeNumber];
+//   res.send(firstEpisode);
 //   } else {
 //     console.log('その他の処理');
 //     res.end();
