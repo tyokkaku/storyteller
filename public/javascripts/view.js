@@ -2,6 +2,10 @@
 
 $(function(){
 
+  let classNumber = 1;
+  let len = $('.episodeTable tbody').children().length;
+  console.log(len);
+
   // animate.css config
 
   $.fn.extend({
@@ -20,40 +24,89 @@ $(function(){
         }
       })(document.createElement('div'));
       this.addClass('animated ' + animationName).one(animationEnd, function() {
-        $(this).removeClass('animated ' + animationName);
-        if (typeof callback === 'function') callback();
+        // $(this).removeClass('animated ' + animationName);
+        // if (typeof callback === 'function') callback();
       });
       return this;
     },
   });
 
+
+  // javascript
+
+   $('.episodeTable td').each(function(i){
+       $(this).attr('class','number' + (i+1));
+   });
+
+  // countClassNumberFunc
+
+  function countUp(){
+    if(classNumber >= len) {
+      return;
+    } else {
+      classNumber++;
+    }
+  };
+  function countDown(){
+    if(classNumber===1){
+      return;
+    } else {
+      classNumber--;
+    }
+  };
+  function resetCount(){
+    classNumber = 1;
+  };
+
   // ajaxFunc
+
+  $(`.number${classNumber}`).addClass('hogera');
+  $(`.number${classNumber}`).animateCss('fadeIn');
+
+      for (let i=3; i<20; i++){
+        $(`.number${i}`).animateCss('fadeIn');
+      }    
+
+
 
   $('html').keyup(function(e) {
     if(e.keyCode === 39){
-      $('#hogehoge').animateCss('fadeIn');
-    $.ajax({
-      url:'./view',
-      type:'POST',
-      data: {'goNext': true},
-    })
-    .done( (data) => {
-      $('#hogehoge').text(data);
+      $(`.number${classNumber}`).removeClass('hogera');
+      $.ajax({
+        url:'./view',
+        type:'POST',
+        data: {'goNext': true},
+      })
+      .done( (data) => {
+        countUp();
+        console.log(data);
+        console.log(classNumber);
+        $(`.number${classNumber}`).addClass('hogera');
+        $(`.number${classNumber}`).animateCss('fadeIn');
+      // $('.number1').text(data);
     });
     } else {
       return;
     }
   });
+
+
   $('html').keyup(function(e) {
     if(e.keyCode === 37){
-      $('#hogehoge').animateCss('fadeIn');
+      $(`.number${classNumber}`).removeClass('hogera');
+      $('#currentEpisode').animateCss('fadeIn');
     $.ajax({
       url:'./view',
       type:'POST',
       data: {'goBack': true},
     })
     .done( (data) => {
-      $('#hogehoge').text(data);
+      // countDown();
+      console.log(data);
+      console.log(classNumber);
+      $(`.number${classNumber}`).animateCss('fadeIn');
+      $(`.number${classNumber}`).addClass('hogera');
+      // $('#currentEpisode').text(data);
     });
     } else {
       return;
@@ -62,14 +115,18 @@ $(function(){
 
   $('html').keyup(function(e) {
     if(e.keyCode === 13){
-      $('#hogehoge').animateCss('fadeIn');
-    $.ajax({
-      url:'./view',
-      type:'POST',
-      data: {'backToTop': true},
-    })
-    .done( (data) => {
-      $('#hogehoge').text(data);
+      $(`.number${classNumber}`).removeClass('hogera');
+      $.ajax({
+        url:'./view',
+        type:'POST',
+        data: {'backToTop': true},
+      })
+      .done( (data) => {
+      resetCount();
+      $(`.number${classNumber}`).animateCss('fadeIn');
+      $(`.number${classNumber}`).addClass('hogera');
+      $('#currentEpisode').text(data);
+      
     });
     } else {
       return;

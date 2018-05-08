@@ -1,0 +1,17 @@
+
+
+#episodesArea {
+  width: 70%;
+  margin: 10% 15%;
+  font-family: YuMincho;
+}
+
+/* .hogera {
+  opacity: 1;
+} */
+
+#viewEpisodes {
+  animation-duration: 1000ms;
+  opacity: 0.1;
+  white-space:pre-wrap;
+}

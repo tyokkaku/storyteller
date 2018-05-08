@@ -2,14 +2,15 @@ doctype html
 html
   head
     title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/viewStyle.css')
     link(rel="stylesheet", href="/stylesheets/animate.css/animate.min.css")
     script(src="https://code.jquery.com/jquery-3.3.1.min.js")
     script(src="/javascripts/view.js")
 
-block content
-  h1= title
-  p Welcome to #{title}
-  //- p#hoge #{episodes[currentNumber]}
-  p#hogehoge(style="white-space:pre;") #{episodes[currentEpisodeNumber]}
-  div#result
+  body
+    block content
+      div#episodesArea.hogeemon
+          - for (let i=0; i < episodes.length; i++)
+            table.episodeTable(style="table-layout: fixed;width:100%;")
+              tr#episodeRow
+                td#viewEpisodes #{episodes[i]}
