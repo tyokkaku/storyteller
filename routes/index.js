@@ -57,30 +57,31 @@ router.get('/view', function(req, res, next) {
   });
 });
 
-router.post('/view', function(req, res, next) {
-  res.setHeader('Content-Type', 'text/plain');
+// router.post('/view', function(req, res, next) {
+//   res.setHeader('Content-Type', 'text/plain');
 
-  let goNext = req.body['goNext'];
-  let goBack = req.body['goBack'];
-  let backToTop = req.body['backToTop'];
+//   let goNext = req.body['goNext'];
+//   let goBack = req.body['goBack'];
+//   let backToTop = req.body['backToTop'];
+//   let rememberNumber = req.body['rememberNumber'];
 
-  if(goNext){
-    currentEpisodeNumber = countFunc.countUp();
-    let nextEpisode = episodes[currentEpisodeNumber];
-    res.send(nextEpisode);
-  } else if(goBack) {
-    currentEpisodeNumber = countFunc.countDown();
-    let prevEpisode = episodes[currentEpisodeNumber];
-    res.send(prevEpisode);
-  } else if(backToTop) {
-    currentEpisodeNumber = countFunc.resetCount();
-    let firstEpisode = episodes[currentEpisodeNumber];
-    res.send(firstEpisode);
-  } else {
-    console.log('その他の処理');
-    res.end();
-  }
-});
+//   if(goNext){
+//     currentEpisodeNumber = countFunc.countUp();
+//     let nextEpisode = episodes[currentEpisodeNumber];
+//     res.send(nextEpisode);
+//   } else if(goBack) {
+//     currentEpisodeNumber = countFunc.countDown();
+//     let prevEpisode = episodes[currentEpisodeNumber];
+//     res.send(prevEpisode);
+  // } else if(backToTop) {
+  //   currentEpisodeNumber = countFunc.resetCount();
+  //   let firstEpisode = episodes[currentEpisodeNumber];
+  //   res.send(firstEpisode);
+//   } else {
+//     console.log('その他の処理');
+//     res.end();
+//   }
+// });
 
 module.exports.episodes = episodes;
 module.exports.currentEpisodeNumber = currentEpisodeNumber;

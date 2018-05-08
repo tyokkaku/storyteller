@@ -2,9 +2,9 @@
 
 $(function(){
 
-  let classNumber = 1;
+  let classNumber = 0;
   let len = $('.episodeTable tbody').children().length;
-  console.log(len);
+  console.log(`初期値です： ${classNumber}`);
 
   // animate.css config
 
@@ -31,7 +31,6 @@ $(function(){
     },
   });
 
-
   // javascript
 
    $('.episodeTable td').each(function(i){
@@ -48,66 +47,39 @@ $(function(){
     }
   };
   function countDown(){
-    if(classNumber===1){
+    if(classNumber===0){
       return;
     } else {
       classNumber--;
     }
   };
-  function resetCount(){
-    classNumber = 1;
+
+  // keyupFunc
+
+  for (let i=1; i<=len; i++){
+    $(`.number${i}`).animateCss('fadeIn');
+    if(classNumber <= len){
+      classNumber++;
+      console.log(`lenまで増加しました： ${classNumber}`); 
+    }
   };
-
-  // ajaxFunc
-
-  $(`.number${classNumber}`).addClass('hogera');
-  $(`.number${classNumber}`).animateCss('fadeIn');
-
-      for (let i=3; i<20; i++){
-        $(`.number${i}`).animateCss('fadeIn');
-      }    
-
-
 
   $('html').keyup(function(e) {
     if(e.keyCode === 39){
-      $(`.number${classNumber}`).removeClass('hogera');
-      $.ajax({
-        url:'./view',
-        type:'POST',
-        data: {'goNext': true},
-      })
-      .done( (data) => {
         countUp();
-        console.log(data);
-        console.log(classNumber);
-        $(`.number${classNumber}`).addClass('hogera');
+        console.log(`++しました： ${classNumber}`);
         $(`.number${classNumber}`).animateCss('fadeIn');
-      // $('.number1').text(data);
-    });
     } else {
       return;
     }
   });
 
-
   $('html').keyup(function(e) {
     if(e.keyCode === 37){
-      $(`.number${classNumber}`).removeClass('hogera');
       $('#currentEpisode').animateCss('fadeIn');
-    $.ajax({
-      url:'./view',
-      type:'POST',
-      data: {'goBack': true},
-    })
-    .done( (data) => {
-      // countDown();
-      console.log(data);
-      console.log(classNumber);
-      $(`.number${classNumber}`).animateCss('fadeIn');
-      $(`.number${classNumber}`).addClass('hogera');
-      // $('#currentEpisode').text(data);
-    });
+      $(`.number${classNumber}`).removeClass('animated fadeIn');
+      countDown();
+      console.log(`--しました： ${classNumber}`);
     } else {
       return;
     }
@@ -115,21 +87,27 @@ $(function(){
 
   $('html').keyup(function(e) {
     if(e.keyCode === 13){
-      $(`.number${classNumber}`).removeClass('hogera');
-      $.ajax({
-        url:'./view',
-        type:'POST',
-        data: {'backToTop': true},
-      })
-      .done( (data) => {
-      resetCount();
-      $(`.number${classNumber}`).animateCss('fadeIn');
-      $(`.number${classNumber}`).addClass('hogera');
-      $('#currentEpisode').text(data);
-      
-    });
+      for (let i=0; i<=len; i++){
+        $(`.number${i}`).animateCss('fadeIn');
+        countUp();
+      }
+      console.log(`Enterしました： ${classNumber}`);
     } else {
       return;
     }
   });
+
+  $('html').keyup(function(e) {
+    if(e.keyCode === 8){
+      for (let i=1; i<=len; i++){
+        $(`.number${i}`).removeClass('animated fadeIn');
+          countDown();
+      }
+      console.log(`BackSpaceしました： ${classNumber}`);
+    } else {
+      return;
+    }
   });
+
+
+});

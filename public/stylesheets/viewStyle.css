@@ -6,12 +6,8 @@
   font-family: YuMincho;
 }
 
-/* .hogera {
-  opacity: 1;
-} */
-
 #viewEpisodes {
-  animation-duration: 1000ms;
+  animation-duration: 2000ms;
   opacity: 0.1;
   white-space:pre-wrap;
 }

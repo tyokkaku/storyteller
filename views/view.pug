@@ -9,8 +9,8 @@ html
 
   body
     block content
-      div#episodesArea.hogeemon
+      div#episodesArea
           - for (let i=0; i < episodes.length; i++)
             table.episodeTable(style="table-layout: fixed;width:100%;")
-              tr#episodeRow
+              tr
                 td#viewEpisodes #{episodes[i]}
